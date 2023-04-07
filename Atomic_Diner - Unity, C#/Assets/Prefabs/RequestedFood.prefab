@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5995516544977611462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1526384175501547084}
+  - component: {fileID: 8799450586045018160}
+  - component: {fileID: 6696823812571969121}
+  m_Layer: 0
+  m_Name: RequestedFood
+  m_TagString: RequestedFood
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1526384175501547084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995516544977611462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 15, y: 15, z: 15}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8799450586045018160
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995516544977611462}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 341451479
+  m_SortingLayer: 2
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: cdb59942807892f4abfeda3501deacbd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 6, y: 6}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &6696823812571969121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995516544977611462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50caa225ca9c0b4aa04748385f71754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pasta_cheese_sauce: {fileID: 3145889016168170328, guid: 1d9d1c2a098af9b428cec19487312ca0, type: 3}
+  pasta_sauce_meatball: {fileID: 546365462850735560, guid: b8ece4b19c2511444b8d845f4ad43a78, type: 3}
+  pasta_sauce_meatball_cheese_mushroom: {fileID: 7845883004051252222, guid: 64e8e1a4c574eed4ebb301cb5c04b2fc, type: 3}
+  pasta_mushroom_meatball: {fileID: 887942579887169827, guid: a461dd6f3672d50489961bcefea91a3d, type: 3}
+  pasta_mushroom_meatball_sauce: {fileID: 2800432800387159756, guid: fa6c9a84d3e59ed4a8231ab8db7d6aa1, type: 3}
+  ingredientList: []
+  pasta: {fileID: 8852803899127736573, guid: 3e1c002c1a0407c4d944fa85be0acf92, type: 3}
+  sauce: {fileID: 2641720368412735902, guid: 17aaa4da21e14214c82b73fd4e7a7c77, type: 3}
+  cheese: {fileID: 4669690704076693069, guid: 0e631f577607db342ae6e13fb5855c4d, type: 3}
+  meatball: {fileID: 6078970844836398712, guid: c8a5fecc311c3b34288911f871f33916, type: 3}
+  mushroom: {fileID: 2152538206059357744, guid: 87a0a18e4b6130944be270a1a09dbb08, type: 3}

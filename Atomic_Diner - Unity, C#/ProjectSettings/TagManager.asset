@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Plate
+  - Meatballs
+  - Pasta
+  - Sauce
+  - Cheese
+  - Mushroom
+  - Spider
+  - IdlePosition
+  - Cursor
+  - Spaghetti_Cheese_Sauce
+  - Spaghetti_Sauce_Meatball
+  - RequestedFood
+  - Spaghetti_Sauce_Meatball_Cheese_Mushroom
+  - Spaghetti_Mushroom_Meatball
+  - Spaghetti_Mushroom_Meatball_Sauce
+  - Door
+  - Bacon
+  - Mint
+  - Octopus
+  - Pepper
+  - Salt
+  - MeatballOnPlate
+  - Worm
+  - FishBone
+  - Bone
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ingredients Outline
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Cooking Station
+    uniqueID: 448296931
+    locked: 0
+  - name: Everything Else
+    uniqueID: 341451479
+    locked: 0
+  - name: Reaction
+    uniqueID: 3392101985
+    locked: 0
