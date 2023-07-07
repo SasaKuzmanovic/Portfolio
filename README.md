@@ -2,6 +2,7 @@
 - My Final Year Project that creates controller sharing between two computers using Discord
 - Project I am the most proud of as it already proves that the concept is viable
 - Control someone elses game over Discord when they assign you the role
+- Utilises low-level networking with sockets
 
 ## Atomic Diner 
 - Project I was working on as part of my Real World Modelling subject from the #TURNIP&DUCK Company
