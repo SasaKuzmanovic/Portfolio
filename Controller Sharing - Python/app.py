@@ -1,8 +1,21 @@
 import discord
 import commands
+import button_presets
 import pygame
+import time
+import socket
+
+
 from pynput.keyboard import Key, Controller
 
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+SERVER_IP = "93.107.73.78"
+TCP_IP = ""
+PORT = 9011
+buffer_size = 1024
+msg = ("X PRESSED...")
+
+buttonToBePressed = ""
 
 intents = discord.Intents.all()
 client = discord.Client(command_prefix='!', intents=intents)
@@ -11,8 +24,6 @@ myGuild = ""
 role = ""
 
 saveChannel = ""
-
-neCekam = False
 
 joysticks = {}
 keyboard = Controller()
@@ -25,29 +36,59 @@ async def on_ready():
 
     pygame.joystick.init()
     if pygame.joystick.get_count() > 0:
-        print(f'Initan sam')
+        print(f'Initan sam') 
 
-    print(f'PYGAME initialised')
+    button_presets.controlIntro()
 
     print(f'Choose if you are a streamer or a viewer!')
     print(f'Select [1] if you are a streamer')
     print(f'Or select [2] if you are a viewer')
 
-    
-
-
     value = input('Type 1 or 2:')
 
     if value == '2':
-        waitingForInput()
+        print('====================================')
+        print('========You are now a viewer========')
+        print('====================================')
+        print('=======Say "Hello" to the bot=======')
+        print('========To play, say "Play"=========')
+        print('====================================')
     else:
         myGuild = client.get_guild(1047959171825405972)
         role = discord.utils.get(myGuild.roles, id=1047961554680823898)
+        print('====================================')
+        print('=========Streamer Selected==========')
+        print('====================================')
+        print('Enjoy shared gameplay')
+        waitForInput()
+        
 
-        print(f'We have logged in as {client.user}!')  ## Prints the user name of the Bot when it connects
-        print(f'Guild: {myGuild}')  # Prints the Server name where it is currently operating
-        print(f'Role for sharing gameplay: {role}') # Displays the role that a viewer has to have
+def sendInput(button):
+    print("Attempting to send message: " + button)
+    sock.send(button.encode('utf8'))
 
+    data = sock.recv(buffer_size).decode('utf-8')
+    print("Received: " + data)
+
+
+def waitForInput():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tcp_ip = ""
+    port = 9011
+    s.bind((tcp_ip, port))
+    s.listen(1)
+
+    con, addr = s.accept()
+    print("Connection from: ", addr)
+    while True:
+        data = con.recv(buffer_size).decode('utf-8')
+        if not data:
+            break
+        print("Data received: " + data)
+        buttonToBePressed = data
+        commands.checkForContents(buttonToBePressed)
+        con.send(data.encode('utf-8'))
+    s.close()
     
 
 def waitingForInput():
@@ -63,25 +104,23 @@ def waitingForInput():
                     # To be added   1. Add message sending to channels
                     #               2. Triggering a function when a button is pressed and the message is sent to discord. Try to trigger the function before the message is sent to reduce latency
                     joystick = joysticks[event.instance_id]
-                    keyboard.press('w')
-                    keyboard.press(Key.enter)
                     if joystick.rumble(0, 0.7, 500):
                         print(f"Rumble effect played on joystick {event.instance_id}")
+                    sendInput('w')
                 if event.button == 1:
-                    joystick = joysticks[event.instance_id]
-                    keyboard.press('y')
-                    keyboard.press(Key.enter)
+                    sendInput('s')
                 if event.button == 13:
-                    joystick = joysticks[event.instance_id]
-                    keyboard.press('a')
-                    keyboard.press(Key.enter)
+                    sendInput('a')
                 if event.button == 14:
-                    joystick = joysticks[event.instance_id]
-                    keyboard.press('d')
-                    keyboard.press(Key.enter)
+                    sendInput('d')
 
             if event.type == pygame.JOYBUTTONUP:
-                print("Joystick button released.")
+                if event.button == 0:
+                    sendInput('wr')
+                if event.button == 13:
+                    sendInput('ar')
+                if event.button == 14:
+                    sendInput('dr')
 
             # Handle hotplugging
             if event.type == pygame.JOYDEVICEADDED:
@@ -116,7 +155,6 @@ async def on_message(message):
         print(f'User: {user} has the role: {role}')
 
         print(message.content)
-        commands.checkForContents(message)
 
         if message.author == client.user:
             return
@@ -124,19 +162,11 @@ async def on_message(message):
             await message.channel.send('Sup!')
 
 
-        if message.content.startswith('Forward'):
-            keyboard.press('a')
-            commands.forward()
-            await message.channel.send('Forward Control Toggled!')
-
-        if message.content.startswith('Backwards'):
-            commands.backwards()   
-            await message.channel.send('Backwards Control Toggled!')
+        if message.content.startswith('Play'):
+            await message.channel.send('You are now allowed to play!')
+            sock.connect((SERVER_IP, PORT))
+            waitingForInput()
     else:
         await message.channel.send('You do not have the permission to control the game!')
         
-
-client.run("MTA0Nzk1OTgwMjA4MjUwODg2MA.GrAq9T.Zw3XsSIcGbsvHKuJHHYLoMZYoCOfw-j8LJZNp8")
-
-
-## Try getting input working in the game
+client.run("MTA0Nzk1OTgwMjA4MjUwODg2MA.GxVMzB.lpatTKZmALVRm-iyfnRgM9DyRhJ7vTYhZT2wzw")
