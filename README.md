@@ -16,3 +16,10 @@
 ## Texturing OpenGL
 - As a part of my Computer Architecture project we were learning how to put textures and shaders on certain objects
 - Texturing plains on the screen with a given texture
+
+## RogueLike
+- Unity project that our small group of friends decided to build
+- By the title, it describes it as a Rogue Like, but it is also a platformer where your character has to fight its way through victory
+- Multiple story levels with obstacles
+- Multiple enemies and types of attack
+- At the end of the game there is a 2 stage boss fight to complete the game.
