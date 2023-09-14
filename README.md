@@ -9,7 +9,7 @@
 ## Atomic Diner 
 - Project I was working on as part of my Real World Modelling subject for the #TURNIP&DUCK
 - Game for children based on the cartoon called # ATOM TOWN 
-- Created a game where children can prepare food for each one of the elements.
+- Food preparation game, where children learn chemical elements by preparing food for them
 ![AtomicDiner](https://github.com/SasaKuzmanovic/Portfolio/assets/58366797/6e95e448-0b1c-4aaa-bb56-7538fef2591d)
 
 ## Controller Sharing over Discord
