@@ -28,6 +28,7 @@
       justify-content:space-evenly;
       align-items: center;
       padding: 0.5rem 2rem;
+      height: 5vh;
       z-index: 1000;
     }
 
@@ -39,7 +40,8 @@
 
     nav ul li a {
       color: white;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: 1000;
       transition: color 0.3s ease;
     }
 
@@ -50,8 +52,8 @@
     .logo {
       position: absolute;
       height: auto;
-      width: auto;
-      max-height: 40px;
+      width: auto; 
+      max-height: 60px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -96,11 +98,13 @@
       background: white;
       color: black;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.5rem;
       border-radius: 8px;
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      height: 100px;
+      width: 550px;
     }
 
     .shine-button::after {
