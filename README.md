@@ -1,3 +1,9 @@
+## Black and Amber Driving School
+- Web Development Project for a client
+- Simple website that shortly describes the business
+- Developed using HTML/CSS/JS Stack
+
+
 ## RogueLike
 - Unity project that our small group of friends decided to build
 - By the title, it describes it as a Rogue Like, but it is also a platformer where your character has to fight its way through victory
@@ -18,6 +24,7 @@
 - Control someone elses game over Discord when they assign you the role
 - Utilises low-level networking with sockets
 ![Gameplay](https://github.com/SasaKuzmanovic/Portfolio/assets/58366797/efae9686-29b7-4fd9-a128-1418e2731d40)
+
 
 ## Rabbits Game 
 - My first ever game created in assembly
