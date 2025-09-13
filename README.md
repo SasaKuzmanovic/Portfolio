@@ -2,7 +2,7 @@
 - Web Development Project for a client
 - Simple website that shortly describes the business
 - Developed using HTML/CSS/JS Stack
-
+![website](https://raw.githubusercontent.com/SasaKuzmanovic/Portfolio/refs/heads/main/BlackAndAmber%20-%20HTML-CSS-JS/pic1.png)
 
 ## RogueLike
 - Unity project that our small group of friends decided to build
