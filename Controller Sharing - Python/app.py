@@ -10,7 +10,7 @@ import requests
 from pynput.keyboard import Key, Controller
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-SERVER_IP = "109.76.175.239"
+SERVER_IP = ""
 TCP_IP = ""
 PORT = 9011
 buffer_size = 1024
@@ -69,8 +69,7 @@ async def on_ready():
         waitForInput()
         
 def getStreamerIP():
-    response = requests.get('https://api.ipify.org').text
-    return response
+    SERVER_IP  = requests.get('https://api.ipify.org').text
 
 def sendInput(button):
     print("Attempting to send message: " + button)
@@ -145,6 +144,8 @@ def waitingForInput():
 @client.event
 async def on_message(message):
     user = message.author
+    
+    host_ip = public_ip
 
     forward = False
     backwards = False
@@ -168,7 +169,7 @@ async def on_message(message):
         if message.author == client.user:
             return
         if message.content.startswith('Hello'):
-            await message.channel.send('Sup!')
+            await message.channel.send('Sup! To Play, Simply type Play in the text box')
 
 
         if message.content.startswith('Play'):
