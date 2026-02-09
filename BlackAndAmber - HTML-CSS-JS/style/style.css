@@ -28,7 +28,6 @@
       justify-content:space-evenly;
       align-items: center;
       padding: 0.5rem 2rem;
-      height: 5vh;
       z-index: 1000;
     }
 
@@ -40,8 +39,7 @@
 
     nav ul li a {
       color: white;
-      font-size: 20px;
-      font-weight: 1000;
+      font-weight: bold;
       transition: color 0.3s ease;
     }
 
@@ -52,8 +50,8 @@
     .logo {
       position: absolute;
       height: auto;
-      width: auto; 
-      max-height: 60px;
+      width: auto;
+      max-height: 40px;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -70,26 +68,31 @@
     }
 
     .hero img {
+      animation: floatIn 0.8s ease-out forwards;
       max-width: 500px;
       border-radius: 50%;
       box-shadow: 0 0 40px rgba(0,0,0,0.4);
       background: rgba(0,0,0,0.1);
+      
     }
 
     .hero-text {
       max-width: 600px;
+      
     }
 
     .hero-text h1 {
       font-size: 3.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
+      animation: fadeUp 0.8s ease-out forwards;
     }
 
     .hero-text p {
       margin-bottom: 1.5rem;
       line-height: 1.6;
       font-size: 1.1rem;
+      animation: fadeUp 1s ease-out forwards;
     }
 
     .shine-button {
@@ -98,25 +101,19 @@
       background: white;
       color: black;
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: 1rem;
       border-radius: 8px;
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      height: 100px;
-      width: 550px;
+
+      /* /*animation: fadeUp 1.2s ease-out forwards;  */
     }
 
-    .shine-button::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -75%;
-      width: 50%;
-      height: 100%;
-      /*background: rgba(255, 255, 255, 0.6);*/
-      background: #ffae00;
-      transform: skewX(-25deg);
+    .shine-button:hover {
+      background: #25D366;
+      color: white;
+      box-shadow: 0 0 15px rgba(37,211,102,0.8);
     }
 
     .shine-button:hover::after {
@@ -253,3 +250,163 @@
       padding: 1rem;
       margin-top: 2rem;
     }
+
+    /* ---------------- MOBILE RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+
+  /* Navbar */
+  nav {
+    padding: 0.8rem 1rem;
+  }
+
+  nav ul {
+    display: none;
+  }
+
+  .logo {
+    max-height: 32px;
+    position: static;
+    transform: none;
+    margin: auto;
+  }
+
+  /* Hero Section */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+    padding: 3rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .hero img {
+    max-width: 220px;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .shine-button {
+    display: block;
+    width: 100%;
+    max-width: 360px;
+    margin: 1.8rem auto 0;
+    padding: 1.1rem 1.5rem;
+    font-size: 1.15rem;
+    border-radius: 14px;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+
+  /* Reviews */
+  #reviews {
+    margin: 3rem 1rem;
+    padding: 3rem 1rem;
+  }
+
+  #reviews h2 {
+    font-size: 1.6rem;
+  }
+
+  .review-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact */
+  #contact {
+    margin: 4rem 1rem;
+    padding: 3rem 1rem;
+  }
+
+  #contact h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-card {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+    padding: 1rem 0.5rem;
+  }
+
+}
+
+/* Extra small phones */
+@media (max-width: 420px) {
+
+  .hero-text h1 {
+    font-size: 1.9rem;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
+  }
+
+}
+
+
+
+
+
+/*                     ANIMATIONS               */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#reviews,
+#contact {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+#reviews.show,
+#contact.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card,
+.contact-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.card.show,
+.contact-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
