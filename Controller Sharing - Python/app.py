@@ -16,6 +16,8 @@ PORT = 9011
 buffer_size = 1024
 msg = ("X PRESSED...")
 
+WEBHOOK = "https://discord.com/api/webhooks/1470442670789755189/j7FEo_6lA887STu6VaS9RaJRTWAI-Bgkilwi2P7roGZqVSJ9VkT4zvB_Gy5PB8C9k6Hz"
+
 buttonToBePressed = ""
 
 intents = discord.Intents.all()
@@ -62,14 +64,15 @@ async def on_ready():
         print('====================================')
         print('Enjoy shared gameplay')
         
+        publish_stream(getStreamerIP(), PORT)
         
-        public_ip = getStreamerIP()
-        print(f'Public IP: {public_ip}')
+        print(f'Your Public IP: {public_ip} is now shared with our BOT')
+        
                
         waitForInput()
         
 def getStreamerIP():
-    SERVER_IP  = requests.get('https://api.ipify.org').text
+    return requests.get('https://api.ipify.org').text
 
 def sendInput(button):
     print("Attempting to send message: " + button)
@@ -85,7 +88,8 @@ def waitForInput():
     port = 9011
     s.bind((tcp_ip, port))
     s.listen(1)
-
+    
+    
     con, addr = s.accept()
     print("Connection from: ", addr)
     while True:
@@ -98,6 +102,11 @@ def waitForInput():
         con.send(data.encode('utf-8'))
     s.close()
     
+def publish_stream(ip, port):
+    data = {
+        "content": f"STREAMER ONLINE: `{ip=}:{port}`"
+    }
+    requests.post(WEBHOOK, json=data)
 
 def waitingForInput():
     done = False
@@ -145,7 +154,7 @@ def waitingForInput():
 async def on_message(message):
     user = message.author
     
-    host_ip = public_ip
+    host_ip = SERVER_IP
 
     forward = False
     backwards = False
