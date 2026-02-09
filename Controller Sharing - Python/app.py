@@ -56,6 +56,10 @@ async def on_ready():
         print('=======Say "Hello" to the bot=======')
         print('========To play, say "Play"=========')
         print('====================================')
+        
+        msg = getLatestMessage()
+        
+        print(f'latest message', msg)
     else:
         myGuild = client.get_guild(1047959171825405972)
         role = discord.utils.get(myGuild.roles, id=1047961554680823898)
@@ -66,7 +70,7 @@ async def on_ready():
         
         publish_stream(getStreamerIP(), PORT)
         
-        print(f'Your Public IP: {public_ip} is now shared with our BOT')
+        print(f'Your Public IP: {getStreamerIP()} is now shared with our BOT')
         
                
         waitForInput()
@@ -104,7 +108,7 @@ def waitForInput():
     
 def publish_stream(ip, port):
     data = {
-        "content": f"STREAMER ONLINE: `{ip=}:{port}`"
+        "content": f"IP: {ip}"
     }
     requests.post(WEBHOOK, json=data)
 
@@ -149,13 +153,25 @@ def waitingForInput():
                 del joysticks[event.instance_id]
                 print(f"Joystick {event.instance_id} disconnected")
 
+def getLatestMessage():
+    BOT_TOKEN = "MTA0Nzk1OTgwMjA4MjUwODg2MA.GxxyOv.9SWihQhATPaK_bJ6xR-HdokBPXB9dVbVQSaZpk"
+    CHANNEL_ID = "1047959172341301270"
+    
+    headers = {
+        "Authorization": f'Bot {BOT_TOKEN}'
+    }
+    
+    url = f"https://discord.com/api/v10/channels/{CHANNEL_ID}/messages?limit=1"
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()
+    return r.json()[0]["content"]
+
 
 @client.event
 async def on_message(message):
     user = message.author
     
-    host_ip = SERVER_IP
-
+    streamer_ip = ''
     forward = False
     backwards = False
     left = False
@@ -164,6 +180,7 @@ async def on_message(message):
 
     myGuild = client.get_guild(1047959171825405972)
     role = discord.utils.get(myGuild.roles, id=1047961554680823898)
+    
     for member in role.members:
         memberList.append(member)
     
@@ -179,8 +196,6 @@ async def on_message(message):
             return
         if message.content.startswith('Hello'):
             await message.channel.send('Sup! To Play, Simply type Play in the text box')
-
-
         if message.content.startswith('Play'):
             await message.channel.send('You are now allowed to play!')
             sock.connect((SERVER_IP, PORT))
