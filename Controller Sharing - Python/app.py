@@ -4,12 +4,13 @@ import button_presets
 import pygame
 import time
 import socket
+import requests
 
 
 from pynput.keyboard import Key, Controller
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-SERVER_IP = "93.107.73.78"
+SERVER_IP = "109.76.175.239"
 TCP_IP = ""
 PORT = 9011
 buffer_size = 1024
@@ -60,8 +61,16 @@ async def on_ready():
         print('=========Streamer Selected==========')
         print('====================================')
         print('Enjoy shared gameplay')
+        
+        
+        public_ip = getStreamerIP()
+        print(f'Public IP: {public_ip}')
+               
         waitForInput()
         
+def getStreamerIP():
+    response = requests.get('https://api.ipify.org').text
+    return response
 
 def sendInput(button):
     print("Attempting to send message: " + button)
@@ -169,4 +178,4 @@ async def on_message(message):
     else:
         await message.channel.send('You do not have the permission to control the game!')
         
-client.run("MTA0Nzk1OTgwMjA4MjUwODg2MA.GxVMzB.lpatTKZmALVRm-iyfnRgM9DyRhJ7vTYhZT2wzw")
+client.run("MTA0Nzk1OTgwMjA4MjUwODg2MA.GxxyOv.9SWihQhATPaK_bJ6xR-HdokBPXB9dVbVQSaZpk")
